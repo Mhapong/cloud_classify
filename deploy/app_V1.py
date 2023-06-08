@@ -16,7 +16,7 @@ import pathlib
 temp = pathlib.PosixPath
 pathlib.WindowsPath = pathlib.PosixPath #if run on window and not streamlit cloud pathlib.PosixPath = pathlib.WindowsPath
 
-model = load_learner("deploy/tytc_resnet34_fastai_R8.pkl") # load model
+model = load_learner("deploy/new_resnet152_fastai(1st).pkl") # load model
 
 st.title("Cloud _CLassy") #Title
 st.markdown('"Cloud _CLassy" is a project that will help you identify a cloud type\'s model from the image you upload.') #information
