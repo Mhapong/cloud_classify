@@ -15,6 +15,7 @@ MODEL_URL = "https://github.com/Mhapong/cloud_classify/blob/main/Cloud_resnet50_
 urllib.request.urlretrieve(MODEL_URL, "Cloud_resnet50_fastai.pkl")
 c_type = ['Altocumulus', 'Altostratus', 'Cirrocumulus', 'Cirrostratus', 'Cirrus', 'Contrails', 'Cumulonimbus', 'Cumulus', 'Nimbostratus', 'Stratocumulus', 'Stratus']
 model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
+model = models.resnet50()
 model = model.eval()
 
 st.title("Cloud _Classy") #Title
