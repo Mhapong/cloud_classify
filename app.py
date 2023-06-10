@@ -11,8 +11,7 @@ from fastai.vision.all import *
 import pathlib
 
 c_type = ['Altocumulus', 'Altostratus', 'Cirrocumulus', 'Cirrostratus', 'Cirrus', 'Contrails', 'Cumulonimbus', 'Cumulus', 'Nimbostratus', 'Stratocumulus', 'Stratus']
-model = load_learner("./Cloud_resnet50_fastai.pkl") # load model
-
+model = load_learner("Cloud_resnet50_fastai.pkl") # load model
 st.title("Cloud _Classy") #Title
 st.markdown('"Cloud _CLassy" is a project that will help you identify a cloud type from the image you upload.') #information
 st.markdown("Please upload your image of cloud or use the sample images on the left sidebar.") #information
