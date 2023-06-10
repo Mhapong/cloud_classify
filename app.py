@@ -2,7 +2,6 @@ import streamlit as st
 from PIL import Image
 import os
 import json
-import ResnetModel
 import numpy as np
 import pandas as pd
 from fastai.vision.all import (
