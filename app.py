@@ -4,11 +4,9 @@ import os
 import json
 import numpy as np
 import pandas as pd
-from fastai.vision.all import (
-    load_learner,
-    PILImage,
-    Resize,
-)
+from fastai.vision.all import load_learner
+from fastai.vision.all import PILImage
+from fastai.vision.all import Resize
 from fastai.vision.all import *
 from fastai.vision.widgets import *
 import pathlib
