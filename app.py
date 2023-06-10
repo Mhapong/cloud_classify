@@ -9,6 +9,7 @@ from fastai.vision.all import PILImage
 from fastai.vision.all import Resize
 from fastai.vision.all import *
 import pathlib
+import urllib
 
 MODEL_URL = "https://github.com/Mhapong/cloud_classify/blob/main/Cloud_resnet50_fastai.pkl"
 urllib.request.urlretrieve(MODEL_URL, "Cloud_resnet50_fastai.pkl")
