@@ -1,0 +1,13 @@
+An example picture from the Cloud-type test dataset depicting a Altocumulus
+An example picture from the Cloud-type test dataset depicting Altocumuluses
+An example picture from the Cloud-type test dataset depicting a Altostratus
+An example picture from the Cloud-type test dataset depicting a Cirrocumulus
+An example picture from the Cloud-type test dataset depicting a Cirrostratus
+An example picture from the Cloud-type test dataset depicting a Cirrus
+An example picture from the Cloud-type test dataset depicting a Contrail
+An example picture from the Cloud-type test dataset depicting a Cumulonimbus
+An example picture from the Cloud-type test dataset depicting a Cumulus
+An example picture from the Cloud-type test dataset depicting a Nimbostratus
+An example picture from the Cloud-type test dataset depicting a Stratocumulus
+An example picture from the Cloud-type test dataset depicting Stratocumuluses
+An example picture from the Cloud-type test dataset depicting a Stratus
