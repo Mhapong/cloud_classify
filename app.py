@@ -11,8 +11,8 @@ from fastai.vision.all import *
 import pathlib
 import urllib
 
-MODEL_URL = "https://github.com/Mhapong/cloud_classify/blob/main/Cloud_resnet50_fastai.pkl"
-urllib.request.urlretrieve(MODEL_URL, "Cloud_resnet50_fastai.pkl")
+'''MODEL_URL = "https://github.com/Mhapong/cloud_classify/raw/main/Cloud_resnet50_fastai.pkl"
+urllib.request.urlretrieve(MODEL_URL)'''
 c_type = ['Altocumulus', 'Altostratus', 'Cirrocumulus', 'Cirrostratus', 'Cirrus', 'Contrails', 'Cumulonimbus', 'Cumulus', 'Nimbostratus', 'Stratocumulus', 'Stratus']
 model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
 
@@ -27,7 +27,6 @@ sample_image = st.sidebar.selectbox(   #create selectbox sidebar
     (file_name))
 
 file = st.file_uploader("Upload your image") #upload file
-file = get_transforms()
 if file is None:
     img = PILImage.create(os.path.join(sample_path, sample_image))
     st.title("Here is the sample image") #display sample image
@@ -39,13 +38,17 @@ else:
     st.image(img)
 
 im_predicted = model.predict(img) #predict model
+st.write(im_predicted[0])
+st.write(im_predicted[2][6].item()*100,'%')
 
-if im_predicted in c_type:
-    st.success(f"This cloud is **{a}**  with the probability of **{c[b]*100:.02f}**%") #result displays
-    st.balloons()
 
-else:
-    st.success(f"This cloud is **{a}**  with the probability of **{c[b]*100:.02f}**%") #result display
+
+# if im_predicted in c_type:
+#     st.success(f"This cloud is **{a}**  with the probability of **{c[b]*100:.02f}**%") #result displays
+#     st.balloons()
+
+# else:
+#     st.success(f"This cloud is **{a}**  with the probability of **{c[b]*100:.02f}**%") #result display
 
 st.markdown('Link ต่างๆที่เกี่ยวข้อง')
 st.markdown('Medium : https://medium.com/@Chinochi/cloud-type-classification-cloud-class-ระบบแยกประเภทของเมฆ-6c5233f1ab8')
