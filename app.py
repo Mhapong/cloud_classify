@@ -10,8 +10,11 @@ from fastai.vision.all import Resize
 from fastai.vision.all import *
 import pathlib
 
+MODEL_URL = "https://github.com/Mhapong/cloud_classify/blob/main/Cloud_resnet50_fastai.pkl"
+urllib.request.urlretrieve(MODEL_URL, "Cloud_resnet50_fastai.pkl")
 c_type = ['Altocumulus', 'Altostratus', 'Cirrocumulus', 'Cirrostratus', 'Cirrus', 'Contrails', 'Cumulonimbus', 'Cumulus', 'Nimbostratus', 'Stratocumulus', 'Stratus']
 model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
+model = model.eval()
 
 st.title("Cloud _Classy") #Title
 st.markdown('"Cloud _CLassy" is a project that will help you identify a cloud type from the image you upload.') #information
