@@ -15,8 +15,6 @@ MODEL_URL = "https://github.com/Mhapong/cloud_classify/blob/main/Cloud_resnet50_
 urllib.request.urlretrieve(MODEL_URL, "Cloud_resnet50_fastai.pkl")
 c_type = ['Altocumulus', 'Altostratus', 'Cirrocumulus', 'Cirrostratus', 'Cirrus', 'Contrails', 'Cumulonimbus', 'Cumulus', 'Nimbostratus', 'Stratocumulus', 'Stratus']
 model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
-model = models.resnet50()
-model = model.eval()
 
 st.title("Cloud _Classy") #Title
 st.markdown('"Cloud _CLassy" is a project that will help you identify a cloud type from the image you upload.') #information
@@ -42,7 +40,7 @@ else:
 
 im_predicted = model.predict(img) #predict model
 
-if a in c_type:
+if im_predicted in c_type:
     st.success(f"This cloud is **{a}**  with the probability of **{c[b]*100:.02f}**%") #result displays
     st.balloons()
 
