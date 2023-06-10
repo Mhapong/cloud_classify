@@ -8,7 +8,6 @@ from fastai.vision.all import load_learner
 from fastai.vision.all import PILImage
 from fastai.vision.all import Resize
 from fastai.vision.all import *
-from fastai.vision.widgets import *
 import pathlib
 
 c_type = ['Altocumulus', 'Altostratus', 'Cirrocumulus', 'Cirrostratus', 'Cirrus', 'Contrails', 'Cumulonimbus', 'Cumulus', 'Nimbostratus', 'Stratocumulus', 'Stratus']
