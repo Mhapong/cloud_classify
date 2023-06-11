@@ -15,7 +15,10 @@ plt = platform.system()
 if plt == 'Windows': pathlib.PosixPath = pathlib.WindowsPath
 
 st.set_page_config(page_title="Cloud Classy",page_icon="☁️",layout="wide",initial_sidebar_state="expanded")
-model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
+modelPath = Path('Cloud_resnet50_fastai.pkl')
+empty_data = ImageDataLoaders.load_empty(modelPath)
+learn = create_cnn(empty_data,model.resnet50)
+model = learn.load('Cloud_resnet50_fastai.pkl',cpu=True) # load model
 
 st.title("**Cloud Classification (Cloud Classy) มามะมาแยกเมฆกัน**") #Title
 st.subheader('"Cloud _Classy" is a project that will help you identify a cloud type from the image you upload.') #information
