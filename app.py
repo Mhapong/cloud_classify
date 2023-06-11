@@ -15,12 +15,23 @@ import urllib
 plt = platform.system()
 if plt == 'Windows': pathlib.PosixPath = pathlib.WindowsPath
 
+dblock = DataBlock(
+    blocks=(ImageBlock, CategoryBlock), #x - image ; y - single class
+    get_items=get_image_files, #get image from selected folder (path) ; return list of pic
+    splitter=GrandparentSplitter(train_name = 'train',valid_name='valid'), #use parent folder as train-valid split
+    get_y=parent_label, #use parent folder as label 
+    item_tfms=Resize(512, method=ResizeMethod.Squish), # Resize image to same size using Squish
+    batch_tfms=aug_transforms(size=512, flip_vert=False, pad_mode=PadMode.Reflection, max_lighting=0.2, p_lighting=0.75 )
+    )
+dls = dblock.dataloaders(r'C:\Users\Msi\Downloads\Added_Cloud_Pic',shuffle=True)
+
 # st.set_page_config(page_title="Cloud Classy",page_icon="☁️",layout="wide",initial_sidebar_state="expanded")
 # modelPath = Path('./Cloud_resnet50_fastai.pkl')
 # empty_data = ImageDataLoaders.from_folder(modelPath)
 # learn = create_cnn(empty_data,model.resnet50)
-# model = learn.load('Cloud_resnet50_fastai.pkl',cpu=True) # load model
-model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
+learner = cnn_learner(dls, resnet50)
+model = learner.load(r'C:\Users\Msi\Documents\GitHub\cloud_classify\Cloud_resnet50_fastai.pkl') # load model
+# model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
 
 st.title("**Cloud Classification (Cloud Classy) มามะมาแยกเมฆกัน**") #Title
 st.subheader('"Cloud _Classy" is a project that will help you identify a cloud type from the image you upload.') #information
