@@ -16,7 +16,7 @@ if plt == 'Windows': pathlib.PosixPath = pathlib.WindowsPath
 
 st.set_page_config(page_title="Cloud Classy",page_icon="☁️",layout="wide",initial_sidebar_state="expanded")
 modelPath = Path('Cloud_resnet50_fastai.pkl')
-empty_data = ImageDataLoaders.load_empty(modelPath)
+empty_data = ImageDataBunch.load_empty(modelPath)
 learn = create_cnn(empty_data,model.resnet50)
 model = learn.load('Cloud_resnet50_fastai.pkl',cpu=True) # load model
 
