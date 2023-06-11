@@ -11,6 +11,9 @@ from fastai.vision.all import *
 import pathlib
 import urllib
 
+plt = platform.system()
+if plt == 'Windows': pathlib.PosixPath = pathlib.WindowsPath
+
 st.set_page_config(page_title="Cloud Classy",page_icon="☁️",layout="wide",initial_sidebar_state="expanded")
 model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
 
