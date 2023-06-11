@@ -12,12 +12,12 @@ import pathlib
 import urllib
 
 st.set_page_config(page_title="Cloud Classy",page_icon="☁️",layout="wide",initial_sidebar_state="expanded")
-model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
+model = load_learner('./Cloud_resnet50_fastai.pkl',cpu=True) # load model
 
 st.title("Cloud Classification (Cloud Classy) มามะมาแยกเมฆกัน") #Title
 st.markdown('"Cloud _Classy" is a project that will help you identify a cloud type from the image you upload.') #information
 st.markdown("Please upload your image of cloud or use the sample images on the left sidebar.") #information
-st.sidebar.image('./logo.jpg')
+st.sidebar.image('./logo.png')
 st.sidebar.markdown("**ถ้าขี้เกียจหรือไม่สะดวกหารูปก็เลือกข้างล่างนี้เลยยย**\n\n\nV\nV\nV\nV\nV\nV\nV\nV\nV\nV")
 
 sample_path = ("./sample_images") #folder sameple images
