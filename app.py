@@ -8,17 +8,19 @@ from fastai.vision.all import load_learner
 from fastai.vision.all import PILImage
 from fastai.vision.all import Resize
 from fastai.vision.all import *
+from fastai.vision.data import ImageDataLoaders
 import pathlib
 import urllib
 
 plt = platform.system()
 if plt == 'Windows': pathlib.PosixPath = pathlib.WindowsPath
 
-st.set_page_config(page_title="Cloud Classy",page_icon="☁️",layout="wide",initial_sidebar_state="expanded")
-modelPath = Path('Cloud_resnet50_fastai.pkl')
-empty_data = ImageDataBunch.load_empty(modelPath)
-learn = create_cnn(empty_data,model.resnet50)
-model = learn.load('Cloud_resnet50_fastai.pkl',cpu=True) # load model
+# st.set_page_config(page_title="Cloud Classy",page_icon="☁️",layout="wide",initial_sidebar_state="expanded")
+# modelPath = Path('./Cloud_resnet50_fastai.pkl')
+# empty_data = ImageDataLoaders.from_folder(modelPath)
+# learn = create_cnn(empty_data,model.resnet50)
+# model = learn.load('Cloud_resnet50_fastai.pkl',cpu=True) # load model
+model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
 
 st.title("**Cloud Classification (Cloud Classy) มามะมาแยกเมฆกัน**") #Title
 st.subheader('"Cloud _Classy" is a project that will help you identify a cloud type from the image you upload.') #information
