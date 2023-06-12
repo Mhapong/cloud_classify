@@ -20,7 +20,7 @@ if plt == 'Linux': pathlib.WindowsPath = pathlib.PosixPath
 model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
 
 st.title("**Cloud Classification (Cloud Classy) มามะมาแยกเมฆกัน**") #Title
-st.subheader('"Cloud_Classy" คือโปรเจคคัดแยกประเภทและบอกลักษณะการเกิด.') #information
+st.subheader('"Cloud_Classy" คือโปรเจคที่ใช้คัดแยกประเภทและบอกลักษณะการเกิด.') #information
 st.markdown("Please upload your image of cloud or use the sample images on the left sidebar.") #information
 st.sidebar.image('./logo.png')
 st.sidebar.markdown("**ถ้าขี้เกียจหรือไม่สะดวกหารูปก็เลือกข้างล่างนี้เลยน้าบบ**\n\n\nV\nV\nV\nV\nV\nV\nV\nV\nV\nV")
@@ -39,6 +39,7 @@ st.sidebar.markdown("**Contact:**")
 st.sidebar.markdown("Email: mhapongg@gmail.com")
 st.sidebar.markdown("-----------------")
 file = st.file_uploader("Upload your image:") #upload file
+
 if file is None:
     img = PILImage.create(os.path.join(sample_path, sample_image))
     st.markdown('\n')
