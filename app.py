@@ -61,7 +61,6 @@ m_prob = prob[0][0]
 if c_name in c_type:
      st.spinner(text="In progress...")
      st.success(f"This cloud is **{c_name}**  with the probability of **{m_prob*100:.02f}**%") #result displays
-     st.snow()
 
      if c_name == c_type[0]:
          st.title(f"**{c_name}** \n ")
