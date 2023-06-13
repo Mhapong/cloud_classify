@@ -38,8 +38,9 @@ st.sidebar.markdown("-----------------")
 st.sidebar.markdown("**Contact:**")
 st.sidebar.markdown("Email: mhapongg@gmail.com")
 st.sidebar.markdown("-----------------")
+st.markdown("-----------------")
 file = st.file_uploader("Upload your image:") #upload file
-
+st.markdown("-----------------")
 if file is None:
     img = PILImage.create(os.path.join(sample_path, sample_image))
     st.markdown('\n')
