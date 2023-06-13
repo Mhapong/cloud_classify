@@ -12,29 +12,15 @@ from fastai.vision.data import ImageDataLoaders
 import pathlib
 import urllib
 
+st.set_page_config(page_title="Cloud Classy",page_icon="☁️",layout="wide",initial_sidebar_state="expanded")
 plt = platform.system()
 if plt == 'Windows': pathlib.PosixPath = pathlib.WindowsPath
+if plt == 'Linux': pathlib.WindowsPath = pathlib.PosixPath
 
-dblock = DataBlock(
-    blocks=(ImageBlock, CategoryBlock), #x - image ; y - single class
-    get_items=get_image_files, #get image from selected folder (path) ; return list of pic
-    splitter=GrandparentSplitter(train_name = 'train',valid_name='valid'), #use parent folder as train-valid split
-    get_y=parent_label, #use parent folder as label 
-    item_tfms=Resize(512, method=ResizeMethod.Squish), # Resize image to same size using Squish
-    batch_tfms=aug_transforms(size=512, flip_vert=False, pad_mode=PadMode.Reflection, max_lighting=0.2, p_lighting=0.75 )
-    )
-dls = dblock.dataloaders(r'C:\Users\Msi\Downloads\Added_Cloud_Pic',shuffle=True)
-
-# st.set_page_config(page_title="Cloud Classy",page_icon="☁️",layout="wide",initial_sidebar_state="expanded")
-# modelPath = Path('./Cloud_resnet50_fastai.pkl')
-# empty_data = ImageDataLoaders.from_folder(modelPath)
-# learn = create_cnn(empty_data,model.resnet50)
-learner = cnn_learner(dls, resnet50)
-model = learner.load(r'C:\Users\Msi\Documents\GitHub\cloud_classify\Cloud_resnet50_fastai.pkl') # load model
-# model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
+model = load_learner('Cloud_resnet50_fastai.pkl',cpu=True) # load model
 
 st.title("**Cloud Classification (Cloud Classy) มามะมาแยกเมฆกัน**") #Title
-st.subheader('"Cloud _Classy" is a project that will help you identify a cloud type from the image you upload.') #information
+st.subheader('"Cloud_Classy" คือโปรเจคที่ใช้คัดแยกประเภทและบอกลักษณะการเกิด.') #information
 st.markdown("Please upload your image of cloud or use the sample images on the left sidebar.") #information
 st.sidebar.image('./logo.png')
 st.sidebar.markdown("**ถ้าขี้เกียจหรือไม่สะดวกหารูปก็เลือกข้างล่างนี้เลยน้าบบ**\n\n\nV\nV\nV\nV\nV\nV\nV\nV\nV\nV")
@@ -52,7 +38,9 @@ st.sidebar.markdown("-----------------")
 st.sidebar.markdown("**Contact:**")
 st.sidebar.markdown("Email: mhapongg@gmail.com")
 st.sidebar.markdown("-----------------")
+st.markdown("-----------------")
 file = st.file_uploader("Upload your image:") #upload file
+st.markdown("-----------------")
 if file is None:
     img = PILImage.create(os.path.join(sample_path, sample_image))
     st.markdown('\n')
@@ -71,8 +59,8 @@ prob = torch.sort(ts_prob, descending=True)
 m_prob = prob[0][0]
 
 if c_name in c_type:
+     st.spinner(text="In progress...")
      st.success(f"This cloud is **{c_name}**  with the probability of **{m_prob*100:.02f}**%") #result displays
-     st.snow()
 
      if c_name == c_type[0]:
          st.title(f"**{c_name}** \n ")
@@ -102,7 +90,7 @@ if c_name in c_type:
          st.title(f"**{c_name}** \n ")
          st.header('**เมฆเซอรัส หรือซีร์รัส (เมฆชั้นสูง):**')
          st.markdown('**เป็นเมฆชั้นสูง:** ในบริเวณเขตร้อนจะเกิดที่ความสูงระหว่าง 6-12 กิโลเมตร ส่วนใหญ่จะมีสีขาวหรือเทาอ่อน และเป็นเมฆซึ่งไม่ทำให้เกิดฝน ส่วนใหญ่จะเป็นผลึกน้ำแข็ง เพราะมีอุณหภูมิต่ำกว่าจุดเยือกแข็ง และมีความแปรปรวน.')
-         st.markdown('หากเห็นเมฆประเภทนี้บ่งบอกได้เลยว่าวันนั้นลักษณะอากาศดี เมฆชนิดนี้อาจทำให้เกิดปรากฏการณ์วงแสงรอบดวงอาทิตย์หรือดวงจันทร์ แต่ยังไม่เต็มวงประกอบด้วยผลึกน้ำแข็ง มีลักษณะเป็นแผ่นบางสีขาวเจิดจ้า หรือสีเทาอ่อน มีรูปทรงอยู่หลายแบบ เช่น เป็นฝอยคล้ายขนนกบางๆ หรือขนสัตว์ หรือเป็นทางยาว ฐานเมฆสูงเฉลี่ย 10,000 เมตร.')
+         st.markdown('หากเห็นเมฆประเภทนี้บ่งบอกได้เลยว่าวันนั้นลักษณะอากาศดี เมฆชนิดนี้อาจทำให้เกิดปรากฏการณ์วงแสงรอบดวงอาทิตย์หรือดวงจันทร์แต่ยังไม่เต็มวง ประกอบด้วยผลึกน้ำแข็ง มีลักษณะเป็นแผ่นบางสีขาวเจิดจ้า หรือสีเทาอ่อน มีรูปทรงอยู่หลายแบบ เช่น เป็นฝอยคล้ายขนนกบางๆ หรือขนสัตว์ หรือเป็นทางยาว ฐานเมฆสูงเฉลี่ย 10,000 เมตร.')
          
      elif c_name == c_type[5]:
          st.title(f"**{c_name}** \n **เมฆหางเครื่องบิน:**\n")
