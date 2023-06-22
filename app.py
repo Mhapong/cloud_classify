@@ -13,6 +13,7 @@ import pathlib
 import urllib
 
 st.set_page_config(page_title="Cloud Classy",page_icon="☁️",layout="wide",initial_sidebar_state="expanded")
+
 plt = platform.system()
 if plt == 'Windows': pathlib.PosixPath = pathlib.WindowsPath
 if plt == 'Linux': pathlib.WindowsPath = pathlib.PosixPath
